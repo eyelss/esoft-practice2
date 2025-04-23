@@ -22,7 +22,7 @@ const NAMES = [
 ]
 
 function getRandomName(array: string[] = NAMES): string {
-  return array[new Date().getMilliseconds() % NAMES.length];
+  return array[new Date().getMilliseconds() % array.length];
 }
 
 function Container() {
