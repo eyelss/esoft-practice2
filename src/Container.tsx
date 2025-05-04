@@ -21,8 +21,12 @@ const NAMES = [
   "Remy",
 ]
 
-function getRandomName(array: string[] = NAMES): string {
-  return array[new Date().getMilliseconds() % array.length];
+function getRandomName(skip?: string, array: string[] = NAMES): string {
+  const rndIndex = new Date().getMilliseconds() % array.length;
+
+  return array[rndIndex] == skip ? 
+    array[(rndIndex + 1) % array.length] : 
+    array[rndIndex];
 }
 
 function Container() {
@@ -32,7 +36,7 @@ function Container() {
     
     const timerId = setInterval(() => {
     
-      setName(getRandomName());
+      setName(name => getRandomName(name));
 
     }, 10_000)
 
