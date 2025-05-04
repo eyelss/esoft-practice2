@@ -8,8 +8,9 @@ function Greeting({ name }: GreetingProp) {
   const nameRef = useRef(name);
   
   useEffect(() => {
+    console.log('Текущее имя: ', name);
+    console.log('Прошлое имя: ', nameRef.current);
     nameRef.current = name;
-
   }, [name]);
 
   return (
